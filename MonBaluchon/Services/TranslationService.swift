@@ -47,7 +47,7 @@ class TranslationService {
                     let translationDone = try JSONDecoder().decode(TranslationReturned.self, from: dataUnwrapped)
                     infoBack(.success(translationDone))
                 } catch {
-                    infoBack(.failure(.badFile))
+                    infoBack(.failure(.decodingError))
                 }
             }
         }

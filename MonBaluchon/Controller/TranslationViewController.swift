@@ -12,15 +12,6 @@ class TranslationViewController: UIViewController {
     var language:Language!
     var languageCode = ""
     
-    private let urlBase = "https://translation.googleapis.com/language/translate/v2?"
-    private let authorization = "&key="
-    private var code = Keys.translation
-    private var askForWord = "q="
-    private var askForLanguage = "&target="
-    private var format = "&format=html"
-    
-    
-    
     @IBOutlet weak var textToTranslate: UITextView!
     @IBOutlet weak var translation: UITextView!
     
@@ -61,14 +52,14 @@ class TranslationViewController: UIViewController {
             print("word :\(word)")
             
             guard let httpString = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-                allErrors(errorMessage:"Bad url.")
+                allErrors(errorMessage:"Bad url")
                 return
             }
             
             textToTranslate.resignFirstResponder()
             chooseLanguage()
             
-            let stringAdress = urlBase + askForWord + httpString + askForLanguage + languageCode + authorization + code.rawValue + format
+            let stringAdress = Config.Language.urlBase + Config.Language.askForWord + httpString + Config.Language.askForLanguage + languageCode + Config.Language.authorization + Config.Language.code.rawValue + Config.Language.format
             
             
             TranslationService.shared.getTranslation(stringAdress : stringAdress) {

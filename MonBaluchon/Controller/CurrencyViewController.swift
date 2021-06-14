@@ -7,16 +7,11 @@
 
 import UIKit
 
-class ChangeValueViewController: UIViewController {
+class CurrencyViewController: UIViewController {
     
     var currency:Currency!
     var currencyBase:Currency!
-    /*
-    private let urlBase = "http://data.fixer.io/api/latest?"
-    private let authorization = "&access_key="
-    private var code = Keys.change
-    //private var value = "USD"
-    */
+    
     private var dicoCurrencies:[String:Double] = [:]
     
     @IBOutlet weak var buttonCurrency: UIButton!
@@ -48,22 +43,18 @@ class ChangeValueViewController: UIViewController {
     
 }
 
-extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension CurrencyViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        // print("1")
         return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // print("2")
         return Config.Currency.currenciesAvailable.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row:Int, forComponent component: Int)-> String? {
-        // print("3")
         return Config.Currency.currenciesAvailable[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("4")
         labelCurrencyOrigin.text = Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 0)]
         labelCurrency.text = Config.Currency.currenciesAvailable[pickerView.selectedRow(inComponent: 1)]
         
@@ -75,7 +66,7 @@ extension ChangeValueViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
 }
 
-extension ChangeValueViewController: UITextFieldDelegate {
+extension CurrencyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sumEURToConvert.resignFirstResponder()
         resultOfConversion.resignFirstResponder()
@@ -89,7 +80,7 @@ extension ChangeValueViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 
-extension ChangeValueViewController {
+extension CurrencyViewController {
     
     
     private func conversion() {

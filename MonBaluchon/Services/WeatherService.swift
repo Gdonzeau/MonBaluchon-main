@@ -47,7 +47,7 @@ class WeatherService {
                     let weatherReceived = try JSONDecoder().decode(WeatherReturned.self, from: dataUnwrapped)
                     infoBack(.success(weatherReceived))
                 } catch {
-                    infoBack(.failure(.badFile))
+                    infoBack(.failure(.decodingError))
                     return
                 }
                 

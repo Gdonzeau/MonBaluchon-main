@@ -11,7 +11,7 @@ enum APIErrors: String, Error {
     case noContact
     case noData
     case badFile
-    case chépasquoi
+    //case chépasquoi
     case noError = "There is no error."
     case decodingError
     case invalidURL = "Not the right adress."

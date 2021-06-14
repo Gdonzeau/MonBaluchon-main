@@ -15,7 +15,13 @@ enum Config {
         static let currenciesAvailable = ["USD","EUR","RUB","GBP","BIF"]
     }
     enum Language {
-        static let baseUrl = ""
+        static let urlBase = "https://translation.googleapis.com/language/translate/v2?"
+        static let authorization = "&key="
+        static var code = Keys.translation
+        static var askForWord = "q="
+        static var askForLanguage = "&target="
+        static var format = "&format=html"
+        
         static let languagesAvailable = ["Anglais",
                                          "Arabe",
                                          "Chinois",
